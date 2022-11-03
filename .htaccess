@@ -1,0 +1,14 @@
+
+
+RewriteEngine on
+RewriteCond $1 !^(index\.php|resources|robots\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^https://itemary.com$ [OR]
+  RewriteCond %{HTTP_HOST} ^www.itemary.com$
+  RewriteRule (.*)$ https://itemary.com/$1 [R=301,L]
+</IfModule>
